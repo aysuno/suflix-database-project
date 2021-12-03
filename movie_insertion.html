@@ -1,0 +1,30 @@
+<head>
+<title>Movie Insertion</title>
+</head>
+<body>
+
+<h2>
+    <p style = "font-family:helvetica,garamond,serif;font-size:24px;">
+    Insert a New Movie Into Suflix Database
+    </p>
+</h2>
+
+<form action="insertmovie.php" method="POST">
+<fieldset style = "font-family:helvetica,garamond,serif;font-size:18x;">
+    <legend>New Movie Details</legend>
+    <label>Movie Name: <input type="text" id="movie_name" name="movie_name" /></label>
+    <label>Description: <input type="text" id="movie_description" name="movie_description" /></label>
+    <label>Writer(s): <input type="text" id="writer" name="writer" /></label>
+    <label>Director(s): <input type="text" id="director" name="director" /></label>
+    <label>Stars: <input type="text" id="stars" name="stars" /></label>
+    <label>Release Year: <input type="date" id="release_year" name="release_year" /></label>
+    <label>Running Time: <input type="number" id="running_time" name="running_time" /></label>
+    <label>Main Category: <input type="text" id="main_category" name="main_category" /></label>
+    <label>Sub Category 1: <input type="text" id="sub_category_one" name="sub_category_one" /></label>
+    <label>Sub Category 2: <input type="text" id="sub_category_two" name="sub_category_two" /></label>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="submit" value="Submit">
+</fieldset>
+</form>
+
+</body>

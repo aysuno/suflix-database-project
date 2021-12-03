@@ -1,0 +1,33 @@
+<head>
+<title>Payment Info Insertion</title>
+</head>
+<body>
+
+<h2>
+    <p style = "font-family:helvetica,garamond,serif;font-size:24px;">
+    Insert a New Payment Info Into Suflix Database
+    </p>
+</h2>
+
+<form action="insertpayment.php" method="POST">
+<fieldset style = "font-family:helvetica,garamond,serif;font-size:18x;">
+    <legend>New Payment Info Details</legend>
+    <label>Full Name: <input type="text" id="paymentcard_fullname" name="paymentcard_fullname" /></label>
+
+    <p>Card Type:</p>
+    <div>
+        <input type="radio" id="paymentcard_type" name="paymentcard_type" value="Debit">
+        <label for="Debit">Debit Card</label>
+        <input type="radio" id="paymentcard_type" name="paymentcard_type" value="Credit">
+        <label for="Credit">Credit Card</label>
+    </div>
+    <br></br>
+    <label>Card Number: <input type="number" id="paymentcard_number" name="paymentcard_number" /></label>
+    <label>End Date: <input type="text" id="paymentcard_enddate" name="paymentcard_enddate" /></label>
+    <label>CVV: <input type="number" id="paymentcard_cvv" name="paymentcard_cvv" /></label>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="submit" value="Submit">
+</fieldset>
+</form>
+
+</body>

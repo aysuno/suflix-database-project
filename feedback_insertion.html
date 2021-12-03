@@ -1,0 +1,22 @@
+<head>
+<title>Feedback Insertion</title>
+</head>
+<body>
+
+<h2>
+    <p style = "font-family:helvetica,garamond,serif;font-size:24px;">
+    Insert a New Feedback Into Suflix Database
+    </p>
+</h2>
+
+<form action="insertfeedback.php" method="POST">
+<fieldset style = "font-family:helvetica,garamond,serif;font-size:18x;">
+    <legend>New Feedback Details</legend>
+    <label>Comment: <input type="text" id="comment" name="comment" /></label>
+    <label>Rating: <input type="number" step="0.1" id="rating" name="rating" /></label>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="submit" value="Submit">
+</fieldset>
+</form>
+
+</body>
