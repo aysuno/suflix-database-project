@@ -4,7 +4,7 @@ include "config.php";
 
 ?>
 
-<form action="delete.php" method="POST">
+<form action="deleteuser.php" method="POST">
 <select name="id">
 
 <?php
