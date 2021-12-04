@@ -1,4 +1,3 @@
-
 <?php
 
 // Username is root
@@ -24,51 +23,60 @@ else{
     $user_identified_name = "";
     ?>
     <!DOCTYPE html>
-<html>
+    <html>
     <head>
         <meta charset="UTF-8" />
         <title> Insert Movie </title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     </head>
     <style>
         .box-color{
-        background-color:white;
+            background-color:white;
         }
         .box-insert-color{
-        background-color:darkblue;
-          color: white;
+            background-color:darkblue;
+            color: white;
         }
-      </style>
+    </style>
     <body style="background-color: #f6f7fb;">
     <div class="custom container-fluid d-flex align-items-center justify-content-center">
-    <div class="row box-color">
-      <div class="col mt-5 col-xs-12 col-md-12 col-lg-12">
-        <h1 style="text-align:center; color:darkblue;font-weight: bold;">⠀⠀SUFLIX⠀⠀</h1>
-        <h2 style="text-align:center">⠀⠀⠀Movie Search⠀⠀⠀</h2>
-        <br>
-        <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="movie_name" name='user_identified_name' placeholder="Movie Name" />
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
+        <div class="row box-color">
+            <div class="col mt-5 col-xs-12 col-md-12 col-lg-12">
+                <h1 style="text-align:center; color:darkblue;font-weight: bold;">⠀⠀SUFLIX⠀⠀</h1>
+                <h2 style="text-align:center">⠀⠀⠀Movie Search⠀⠀⠀</h2>
+                <br>
 
-              <br>
-             <div class="form-row">
-               <div class="col">
-                   <button onclick="assign(user_identified_name)">Search</button>
-               </div>
-               <br> <br> <br> <br>
+                <form method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="movie_name" name='movie_name' placeholder="Movie Name" />
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+
+                    <br>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="submit" class="btn box-insert-color btn-block" id="_submit" name="_submit" value="Search"/>
+                        </div>
+                        <br> <br> <br> <br>
+                    </div>
+                </form>
+                <?php
+
+                if(isset($_POST['_submit'])) {
+                    $user_identified_name = $_POST['movie_name'];
+                    assign($user_identified_name);
+                }
+                ?>
             </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+    </html>
     <?php
 
 }
+
 
 function assign($name) {
     $user = 'root';
@@ -86,7 +94,7 @@ function assign($name) {
     $result = $mysqli->query($sql);
 
     if($result != ""){
-        echo $name;
+
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -104,14 +112,14 @@ function assign($name) {
 
                 h1 {
                     text-align: center;
-                    color: #006600;
+                    color: darkblue;
                     font-size: xx-large;
                     font-family: 'Gill Sans', 'Gill Sans MT',
                     ' Calibri', 'Trebuchet MS', 'sans-serif';
                 }
 
                 td {
-                    background-color: #E4F5D4;
+                    background-color: #f6f7fb;
                     border: 1px solid black;
                 }
 
@@ -189,5 +197,3 @@ function assign($name) {
 
 $mysqli->close();
 ?>
-
-
