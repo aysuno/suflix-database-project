@@ -3,6 +3,9 @@
 include "config.php"; //makes mysql connection
 $db = mysqli_connect('localhost','root','','SUFLIX');
 
+session_start(); // this NEEDS TO BE AT THE TOP of the page before any output etc
+$id = $_SESSION['id'];
+$movie_id = "";
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +24,55 @@ $db = mysqli_connect('localhost','root','','SUFLIX');
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="user.css" rel="stylesheet" />
+    <style>
+        table {
+            margin: 2rem auto;
+            font-size: large;
+            border: 1px solid black;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-max-size: medium;
+            font-family: 'Gill Sans', 'Gill Sans MT',
+            ' Calibri', 'Trebuchet MS', 'sans-serif';
+            padding-top: 4rem;
+
+
+        }
+        h12{
+            text-align: center;
+            color: white;
+            font-size: small;
+            font-family: 'Gill Sans', 'Gill Sans MT',
+            ' Calibri', 'Trebuchet MS', 'sans-serif';
+            margin-top: 120rem;
+            padding-left: 40rem;
+        }
+
+        td {
+            background-color: #4D4D56;
+            border: 1px solid white;
+        }
+
+        th,
+        td {
+            font-weight: bold;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        td {
+            font-weight: lighter;
+            color: white;
+        }
+        btn {
+
+        }
+    </style>
 </head>
 <body id="page-top">
 <!-- Navigation-->
@@ -38,7 +90,47 @@ $db = mysqli_connect('localhost','root','','SUFLIX');
 </nav>
 <!-- Masthead-->
 <header class="masthead">
+    <section>
+        <h1>My Movies</h1>
+        <!-- TABLE CONSTRUCTION-->
+        <table>
+            <tr>
+                <th>NAME</th>
+                <th>DIRECTOR</th>
+                <th>RELEASE YEAR</th>
+                <th>ADD FEEDBACK</th>
+            </tr>
+            <!-- PHP CODE TO FETCH DATA FROM ROWS-->
+            <?php
 
+
+            $db = mysqli_connect('localhost','root','','SUFLIX');
+
+
+            $sql_first = "SELECT * FROM `Movie` LEFT JOIN `Rents` ON `Movie`.`movie_id` = `Rents`.`movie_id` WHERE `id` = '$id'" ;
+            $result = mysqli_query($db, $sql_first);// LOOP TILL END OF DATA
+            echo "Result is: " . $result;
+            while($rows=$result->fetch_assoc())
+            {
+                ?>
+                <form method="POST">
+                <tr>
+
+                    <!--FETCHING DATA FROM EACH
+                        ROW OF EVERY COLUMN-->
+                    <td><?php echo $rows['movie_id'];?></td>
+                    <td><?php echo $rows['director'];?></td>
+                    <td><?php echo $rows['release_year'];?></td>
+                    <td><a href="feedback_insertion.html">ADD FEEDBACK</a></td>
+
+
+                </tr>
+                </form>
+                <?php
+            }
+            ?>
+        </table>
+    </section>
 
 </header>
 <!-- Footer-->

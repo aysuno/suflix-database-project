@@ -11,6 +11,7 @@ if (!empty($_POST['comment'])){
 
     $result = mysqli_query($db, $sql_statement);
     echo "Succesfully inserted with the code: " . $result;
+    echo "<script> window.location.assign('user_orders.php'); </script>";
 }
 else
 {
