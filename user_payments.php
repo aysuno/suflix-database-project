@@ -1,14 +1,10 @@
 <?php
 
 include "config.php"; //makes mysql connection
-$db = mysqli_connect('localhost','root','','SUFLIX');
-$x = 1;
-$sql_first = "SELECT payment_id FROM Does WHERE id = '$x'" ;
-$result_first = mysqli_query($db, $sql_first);
-$sql_second = "SELECT * FROM Payment WHERE payment_id = '$result_first'";
-$result = mysqli_query($db, $sql_second);
 
-
+session_start(); // this NEEDS TO BE AT THE TOP of the page before any output etc
+$id = $_SESSION['id'];
+$payment_id = "";
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +33,21 @@ $result = mysqli_query($db, $sql_second);
         h1 {
             text-align: center;
             color: white;
-            font-size: large;
+            font-max-size: medium;
             font-family: 'Gill Sans', 'Gill Sans MT',
             ' Calibri', 'Trebuchet MS', 'sans-serif';
-            padding-top: 3rem;
+            padding-top: 4rem;
 
 
+        }
+        h12{
+            text-align: center;
+            color: white;
+            font-size: small;
+            font-family: 'Gill Sans', 'Gill Sans MT',
+            ' Calibri', 'Trebuchet MS', 'sans-serif';
+            margin-top: 120rem;
+            padding-left: 40rem;
         }
 
         td {
@@ -96,11 +101,20 @@ $result = mysqli_query($db, $sql_second);
                 <th>CVV</th>
             </tr>
             <!-- PHP CODE TO FETCH DATA FROM ROWS-->
-            <?php // LOOP TILL END OF DATA
+            <?php
+
+
+            $db = mysqli_connect('localhost','root','','SUFLIX');
+
+
+            $sql_first = "SELECT * FROM `Payment` LEFT JOIN `Does` ON `Payment`.`Payment_id` = `Does`.`payment_id` WHERE `id` = '$id'" ;
+            $result = mysqli_query($db, $sql_first);// LOOP TILL END OF DATA
             while($rows=$result->fetch_assoc())
             {
                 ?>
+                <form method="POST">
                 <tr>
+
                     <!--FETCHING DATA FROM EACH
                         ROW OF EVERY COLUMN-->
                     <td><?php echo $rows['paymentcard_type'];?></td>
@@ -108,6 +122,8 @@ $result = mysqli_query($db, $sql_second);
                     <td><?php echo $rows['paymentcard_fullname'];?></td>
                     <td><?php echo $rows['paymentcard_enddate'];?></td>
                     <td><?php echo $rows['paymentcard_cvv'];?></td>
+                    <td><a href="user_payment_deletion.php?Payment_id=<?php echo $rows['Payment_id']; ?>">DELETE</a></td>
+
 
 
 
@@ -116,6 +132,7 @@ $result = mysqli_query($db, $sql_second);
 
 
                 </tr>
+                </form>
                 <?php
             }
             ?>
@@ -132,4 +149,6 @@ $result = mysqli_query($db, $sql_second);
 
 </body>
 </html>
+
+
 

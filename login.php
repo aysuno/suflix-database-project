@@ -1,9 +1,3 @@
-<?php
-
-include "config.php";
-$db = mysqli_connect('localhost','root','','SUFLIX');
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,32 +101,49 @@ $db = mysqli_connect('localhost','root','','SUFLIX');
 </html>
 <?php
 if (!empty($_POST['username']) and !empty($_POST['password'])){
+    $db = mysqli_connect('localhost','root','','SUFLIX');
+
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql_statement_first = "SELECT id FROM Customer WHERE username = '$username'";
-    $sql_statement_second = "SELECT id FROM Users WHERE password = '$password'";
+    $sql_statement_first = "SELECT `id` FROM Customer WHERE username = '$username'";
+    $sql_statement_second = "SELECT `id` FROM Users WHERE password = '$password'";
 
     $result_first = mysqli_query($db, $sql_statement_first);
+
     $result_second = mysqli_query($db, $sql_statement_second);
+    while ($row = $result_first->fetch_assoc()) {
+        if($row['id'] != ""){
+            global $first_id; $first_id  = $row['id'];
+        }
+        else{
+            global $first_id; $first_id  = 1;
+        }
+    }
+    while ($row = $result_second->fetch_assoc()) {
+        if($row['id'] != ""){
+            global $second_id; $second_id = $row['id'];
+        }
+        else{
+            global $second_id; $second_id  = 0;
+        }
+    }
 
+    if( $GLOBALS['first_id'] != "" and $GLOBALS['second_id'] != "" and $GLOBALS['first_id'] == $GLOBALS['second_id']){
+        session_start();
+        $_SESSION['id'] = $GLOBALS['first_id'];
+        /*while ($row = $result_first->fetch_assoc()) {
 
-    if( $result_first != "" and $result_second != "" and $result_first == $result_second){
-        //Burada sıkıntı var bakılması lazım
-
-        $GLOBALS['user_name'] = $username;
-        $GLOBALS['password'] = $password;
-        $GLOBALS['id'] = $result_second;
-        echo "Successfully inserted with the code: ";
+            $_SESSION['id'] = $row['id'];
+        }*/
 
         echo "<script> window.location.assign('user.php'); </script>";
     }
 
+    else{
+        echo "User does not exist!!";
+    }
+
 
 }
-else
-{
-    echo "There is missing information! Add process failed.";
-}
-
 ?>

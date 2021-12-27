@@ -1,6 +1,8 @@
 <?php
 
 include "config.php";
+session_start(); // this NEEDS TO BE AT THE TOP of the page before any output etc
+$id = $_SESSION['id'];
 $db = mysqli_connect('localhost','root','','SUFLIX');
 ?>
 <!DOCTYPE html>
@@ -145,17 +147,24 @@ if (!empty($_POST['paymentcard_fullname'])){
         '$paymentcard_fullname', '$paymentcard_cvv')";
 
     $result = mysqli_query($db, $sql_statement);
-    if($result == true){
+    if($result != ""){
         $sql_statement_second = "SELECT Payment_id FROM Payment WHERE paymentcard_number='$paymentcard_number' ";
+
         $result_second = mysqli_query($db, $sql_statement_second);
+        while ($row = $result_second->fetch_assoc()) {
+            if($row['Payment_id'] != ""){
+                global $payment_id; $payment_id  = $row['Payment_id'];
+            }
+
+        }
         if($result_second != ""){
-            $x = 1;
-            $sql_statement_third = "INSERT INTO Does (payment_id, id) VALUES ('$result_second','$x')";
+            $p_id = $GLOBALS['payment_id'];
+            $sql_statement_third = "INSERT INTO Does (payment_id, id) VALUES ('$p_id','$id')";
             $result_third= mysqli_query($db, $sql_statement_third);
-            echo "Succesfully inserted with the code: " . $result_third;
+            //echo "<script> window.location.assign('user_payments.php'); </script>";
         }
         else{
-            echo "Check the probelm you cannot find the relevant information";
+            echo "Check the problem you cannot find the relevant information";
         }
 
 
