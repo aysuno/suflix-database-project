@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>SUFLIX</title>
+    <link rel="icon" type="image/x-icon" href="assets/main/suflix.jpeg" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="admin.css" rel="stylesheet" />
+
+
+    <style>
+        .row{
+            background-color: black;
+            width: available;
+            padding-left: 60px;
+        }
+
+        .column {
+            float: left;
+            width: 24%;
+            padding-left: 10px;
+            padding-top: 5px;
+            margin-left: 3px;
+            background-color: black;
+            justify-content: flex-start;
+
+        }
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">SUFLIX</a>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="admin.html">Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="r_admin.html">Production Companies</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin.html">Movies</a></li>
+                <li class="nav-item"><a class="nav-link" href="k_admin.html">Feedbacks</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin.html">Orders</a></li>
+                <li class="nav-item"><a class="nav-link" href="s_admin.html">Payments</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Masthead-->
+<header class="masthead">
+
+</header>
+
+<footer class="justify-content-center">
+    <div class="row">
+        <div class="column" style="margin-bottom: 2.5rem; margin-left: 2.5rem">
+            <canvas id="myChart" style="width: 1200rem; height: 1200rem"></canvas>
+        </div>
+
+        <div class="column" style="margin-bottom: 2.5rem; margin-left: 2.5rem">
+            <canvas id="mySecondChart" style="width: 1200rem; height: 1200rem"></canvas>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<footer class="justify-content-around">
+    <h2 style="background-color: black; justify-content: center; padding-left: 475px; color: white; padding-bottom: 25px">Members of the SUFLIX team</h2>
+    <div class="row">
+        <div class="column">
+            <img src="assets/images/öct.jpeg" alt="Snow" style="width:100%">
+            <h2 style="font-size: large; padding-left: 75px; padding-top: 25px; color: white">Ömer Cem Tabar</h2>
+        </div>
+        <div class="column">
+            <img src="assets/images/aö.png" alt="Forest" style="width:100%; height: 82%">
+            <h2 style="font-size: large; padding-left: 100px; padding-top: 25px; color: white">Aysun Öğüt</h2>
+        </div>
+        <div class="column">
+            <img src="assets/images/dm.jpeg" alt="Mountains" style="width:100%">
+            <h2 style="font-size: large; padding-left: 75px; padding-top: 25px; color: white">Doruk Metiner</h2>
+        </div>
+        <div class="column">
+            <img src="assets/images/bt.jpeg" alt="Mountains" style="width:100%">
+            <h2 style="font-size: large; padding-left: 75px; padding-top: 25px; color: white">Berke Turanlıoğlu</h2>
+        </div>
+
+    </div>
+</footer>
+<!-- Footer-->
+<footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; SUFLIX 2021</div></footer>
+
+<script>
+
+    const data = {
+        labels: [
+            'Eating',
+            'Drinking',
+            'Sleeping',
+            'Designing',
+            'Coding',
+            'Cycling',
+            'Running'
+        ],
+        datasets: [{
+            label: 'January',
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: 'rgba(255, 11, 30, 1)',
+            borderColor: 'rgb(255, 11, 30, 0.8)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }, {
+            label: 'February',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }, {
+            label: 'March',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }, {
+            label: 'April',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }, {
+            label: 'May',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }
+            , {
+                label: 'June',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'July',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'August',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'September',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'October',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'November',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'December',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }]
+    };
+
+    const seconddata = {
+        labels: [
+            'Eating',
+            'Drinking',
+            'Sleeping',
+            'Designing',
+            'Coding',
+            'Cycling',
+            'Running'
+        ],
+        datasets: [{
+            label: 'January',
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: 'rgba(255, 11, 30, 1)',
+            borderColor: 'rgb(255, 11, 30, 0.8)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }, {
+            label: 'February',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }, {
+            label: 'March',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }, {
+            label: 'April',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }, {
+            label: 'May',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgb(0, 0, 255, 0.8)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }
+            , {
+                label: 'June',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'July',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'August',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'September',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'October',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'November',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }
+            , {
+                label: 'December',
+                data: [28, 48, 40, 19, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(0, 0, 255, 1)',
+                borderColor: 'rgb(0, 0, 255, 0.8)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }]
+    };
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        },
+    };
+
+    const secondconfig = {
+        type: 'radar',
+        data: seconddata,
+        options: {
+            elements: {
+                line: {
+                    borderWidth: 3
+                }
+            }
+        },
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const mySecondChart = new Chart(
+        document.getElementById('mySecondChart'),
+        secondconfig
+    );
+</script>
+
+
+</body>
+</html>
