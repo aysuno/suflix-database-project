@@ -5,4 +5,4 @@ website with the functions of a classic e-commerce site. Our main objectives wer
 Admins adding movies to the database and customers selecting desired movies, adding them to cart and paying. In addition to these, customers will be able to give 
 feedback too. 
 
-This project was carried out within the scope of Sabancı University CS306 Database Systems Course. 
+This project was carried out within the scope of Sabancı University CS306 Database Systems Course. This project is written in PHP, its interface is created with HTML and CSS.
