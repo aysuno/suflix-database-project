@@ -214,16 +214,31 @@ if (!empty($_POST['fullname']) and !empty($_POST['username'])){
     $phone_number = $_POST['phone_number'];
     $birth_date = $_POST['birth_date'];
     $sex = $_POST['sex'];
+    $zero = 0;
     $country = $_POST['country'];
     $category_liked_one = $_POST['category_liked_one'];
     $category_liked_two = $_POST['category_liked_two'];
     $sql_statement_first = "INSERT INTO Users (fullname , password) VALUES ('$fullname','$password')";
-    $sql_statement_second = "INSERT INTO Customer (username, sex, phone_number, birth_date, country, category_liked_one, category_liked_two) VALUES ('$username','$sex','$phone_number','$birth_date','$country','$category_liked_one','$category_liked_two')";
-
     $result_first = mysqli_query($db, $sql_statement_first);
+
+    $sql_statement_second = "INSERT INTO Customer (username, sex, phone_number, birth_date, country, category_liked_one, category_liked_two) VALUES ('$username','$sex','$phone_number','$birth_date','$country','$category_liked_one','$category_liked_two')";
     $result_second = mysqli_query($db, $sql_statement_second);
 
-    if($result_first != "" and $result_second != ""){
+    $sql_statement_third = "SELECT id FROM Users WHERE fullname='$fullname'";
+    $result_third = mysqli_query($db, $sql_statement_third);
+    while ($row = $result_third->fetch_assoc()) {
+        global $temp_id; $temp_id = $row['id']; // Print a single column data
+
+    }
+    session_start();
+    $_SESSION['temp_id'] = $GLOBALS['temp_id'];
+    $temp_id= $_SESSION['temp_id'];
+
+    $sql_statement_fourth = "INSERT INTO Shopping_Cart (cart_id, total_amount, no_of_movies) VALUES ('$temp_id','$zero','$zero')";
+    $result_fourth = mysqli_query($db, $sql_statement_fourth);
+    $sql_statement_fourth = "INSERT INTO Has (cart_id, id) VALUES ('$temp_id','$temp_id')";
+    $result_fourth = mysqli_query($db, $sql_statement_fourth);
+    if($result_first != "" and $result_second != "" and $result_third != ""){
         echo "Successfully inserted with the code: ";
         echo "<script> window.location.assign('login.php'); </script>";
     }

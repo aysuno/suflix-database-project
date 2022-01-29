@@ -31,10 +31,11 @@ $db = mysqli_connect('localhost','root','','SUFLIX');
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="all_movies.php">Movies</a></li>
-                <li class="nav-item"><a class="nav-link" href="all_producers.php">Production Companies</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="user_personal_feedbacks.php">My Feedbacks</a></li>
                 <li class="nav-item"><a class="nav-link" href="user_orders.php">My Orders</a></li>
                 <li class="nav-item"><a class="nav-link" href="user_payments.php">My Payments</a></li>
+                <li class="nav-item"><a class="nav-link" href="my_cart.php">My Cart</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
             </ul>
         </div>
@@ -42,8 +43,10 @@ $db = mysqli_connect('localhost','root','','SUFLIX');
 </nav>
 <!-- Masthead-->
 <header class="masthead">
-    <video controls autoplay loop muted playsinline style="margin-top: 5rem;  width:90rem">
-        <source src="assets/videos/Vintage%20Halloween%20Spooky%20Cartoons%20Compilation%20(1%20Hour)%20SPOOK%20FACTOR%207_10.mp4" type="video/mp4">
+    <video controls autoplay loop muted playsinline style="margin-top: 5rem;  width:90rem; video::-webkit-media-controls-timeline {
+    display: none;
+}" >
+        <source src="assets/videos/trimmed.mp4" type="video/mp4">
     </video>
 
 </header>

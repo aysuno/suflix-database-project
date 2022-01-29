@@ -21,6 +21,8 @@ $payment_id = "";
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="user.css" rel="stylesheet" />
     <style>
@@ -122,7 +124,7 @@ $payment_id = "";
                     <td><?php echo $rows['paymentcard_fullname'];?></td>
                     <td><?php echo $rows['paymentcard_enddate'];?></td>
                     <td><?php echo $rows['paymentcard_cvv'];?></td>
-                    <td><a href="user_payment_deletion.php?Payment_id=<?php echo $rows['Payment_id']; ?>">DELETE</a></td>
+                    <td><a href="user_payment_deletion.php?Payment_id=<?php echo $rows['Payment_id']; ?>"><i class="fa fa-trash"></i></a></td>
 
 
 

@@ -161,6 +161,7 @@ if (!empty($_POST['paymentcard_fullname'])){
             $p_id = $GLOBALS['payment_id'];
             $sql_statement_third = "INSERT INTO Does (payment_id, id) VALUES ('$p_id','$id')";
             $result_third= mysqli_query($db, $sql_statement_third);
+
             //echo "<script> window.location.assign('user_payments.php'); </script>";
         }
         else{

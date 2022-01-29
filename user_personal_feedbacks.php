@@ -1,7 +1,9 @@
+
+
 <?php
 
 include "config.php"; //makes mysql connection
-$db = mysqli_connect('localhost','root','','suflix_project');
+$db = mysqli_connect('localhost','root','','SUFLIX');
 
 session_start(); // this NEEDS TO BE AT THE TOP of the page before any output etc
 $id = $_SESSION['id'];
@@ -100,33 +102,33 @@ $feedback_id = "";
                 <th>My Comment</th>
                 <th>My Rating</th>
                 <th>Delete</th>
-              
+
             </tr>
             <!-- PHP CODE TO FETCH DATA FROM ROWS-->
             <?php
 
 
-            $db = mysqli_connect('localhost','root','','suflix_project');
+            $db = mysqli_connect('localhost','root','','SUFLIX');
 
 
-            $sql_first = "SELECT `movie`.`movie_name`, `feedback`.`comment`,`feedback`.`rating`, `feedback`.`feedback_id` FROM movie INNER JOIN contains ON `movie`.`movie_id` = `contains`.`movie_id` INNER JOIN feedback ON `contains`.`feedback_id` = `feedback`.`feedback_id` INNER JOIN gives ON `feedback`.`feedback_id` = `gives`.`feedback_id` WHERE `id` = '$id'" ;
+            $sql_first = "SELECT `Movie`.`movie_name`, `Feedback`.`comment`,`Feedback`.`rating`, `Feedback`.`feedback_id` FROM Movie INNER JOIN Contains_Feedback ON `Movie`.`movie_id` = `Contains_Feedback`.`movie_id` INNER JOIN Feedback ON `Contains_Feedback`.`feedback_id` = `Feedback`.`feedback_id` INNER JOIN Gives ON `Feedback`.`feedback_id` = `Gives`.`feedback_id` WHERE `id` = '$id'" ;
             $result = mysqli_query($db, $sql_first);// LOOP TILL END OF DATA
             //echo "Result is: " . $result;
             while($rows=$result->fetch_assoc())
             {
                 ?>
                 <form method="POST">
-                <tr>
+                    <tr>
 
-                    <!--FETCHING DATA FROM EACH
-                        ROW OF EVERY COLUMN-->
-                    <td><?php echo $rows['movie_name'];?></td>
-                    <td><?php echo $rows['comment'];?></td>
-                    <td><?php echo $rows['rating'];?></td>
-                    <td><a href="user_feedback_deletion.php?feedback_id=<?php echo $rows['feedback_id']; ?>"><i class="fa fa-trash"></i></a></td>
-                   
+                        <!--FETCHING DATA FROM EACH
+                            ROW OF EVERY COLUMN-->
+                        <td><?php echo $rows['movie_name'];?></td>
+                        <td><?php echo $rows['comment'];?></td>
+                        <td><?php echo $rows['rating'];?></td>
+                        <td><a href="user_feedback_deletion.php?feedback_id=<?php echo $rows['feedback_id']; ?>"><i class="fa fa-trash"></i></a></td>
 
-                </tr>
+
+                    </tr>
                 </form>
                 <?php
             }
@@ -143,6 +145,3 @@ $feedback_id = "";
 
 </body>
 </html>
-
-
-

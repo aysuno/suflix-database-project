@@ -21,6 +21,8 @@ $movie_id = "";
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="user.css" rel="stylesheet" />
@@ -82,7 +84,7 @@ $movie_id = "";
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="insertpayment.php">Add New Payment Method</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="user.php">Return</a></li>
             </ul>
         </div>
@@ -91,7 +93,7 @@ $movie_id = "";
 <!-- Masthead-->
 <header class="masthead">
     <section>
-        <h1>My Movies</h1>
+        <h1>My Ordered Movies</h1>
         <!-- TABLE CONSTRUCTION-->
         <table>
             <tr>
@@ -109,22 +111,22 @@ $movie_id = "";
 
             $sql_first = "SELECT * FROM `Movie` LEFT JOIN `Rents` ON `Movie`.`movie_id` = `Rents`.`movie_id` WHERE `id` = '$id'" ;
             $result = mysqli_query($db, $sql_first);// LOOP TILL END OF DATA
-            echo "Result is: " . $result;
             while($rows=$result->fetch_assoc())
             {
                 ?>
                 <form method="POST">
-                <tr>
+                    <tr>
 
-                    <!--FETCHING DATA FROM EACH
-                        ROW OF EVERY COLUMN-->
-                    <td><?php echo $rows['movie_id'];?></td>
-                    <td><?php echo $rows['director'];?></td>
-                    <td><?php echo $rows['release_year'];?></td>
-                    <td><a href="feedback_insertion.html">ADD FEEDBACK</a></td>
+                        <!--FETCHING DATA FROM EACH
+                            ROW OF EVERY COLUMN-->
+                        <td><?php echo $rows['movie_name'];?></td>
+                        <td><?php echo $rows['director'];?></td>
+                        <td><?php echo $rows['release_year'];?></td>
+                        <td><a href="feedback_insertion.php?movie_id=<?php echo $rows['movie_id']; ?>&movie_name=<?php echo $rows['movie_name']; ?>";><i class="fa fa-comment"></i></a>
+                        </td>
 
 
-                </tr>
+                    </tr>
                 </form>
                 <?php
             }
@@ -141,4 +143,3 @@ $movie_id = "";
 
 </body>
 </html>
-

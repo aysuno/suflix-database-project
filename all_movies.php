@@ -1,6 +1,8 @@
+
+
 <?php
 // Username is root
-$db = mysqli_connect('localhost','root','','suflix_project');
+$db = mysqli_connect('localhost','root','','SUFLIX');
 $sql = "SELECT * FROM Movie" ;
 $result = mysqli_query($db, $sql);
 ?>
@@ -17,6 +19,7 @@ $result = mysqli_query($db, $sql);
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="user.css" rel="stylesheet" />
@@ -96,41 +99,42 @@ $result = mysqli_query($db, $sql);
 </nav>
 <!-- Masthead-->
 <header class="masthead">
-        <h1>All Movies</h1>
-        <h3>One price for every movie: 5$ </h3>
-        <!-- TABLE CONSTRUCTION-->
-        <div class="container">
-                <div class="row">
-        
-                    <?php // LOOP TILL END OF DATA
-                        while($rows=$result->fetch_assoc())
-                        {
-                            ?>
+    <h1>All Movies</h1>
+    <h3>One price for every movie: 5$ </h3>
+    <!-- TABLE CONSTRUCTION-->
+    <div class="container">
+        <div class="row">
 
-                                <div class="col-md-4 mt-4">
-                                <div class="card border-light mb-3" style="width: 25rem; height: 15rem;">
-                                            <div class="card-body overflow-auto">
-                                                <h5 class="card-title"><?php echo $rows['movie_name'];?></h5>
-                                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $rows['director'];?></h6>
-                                                <p class="card-text"><?php echo $rows['movie_description'];?></p>
+            <?php // LOOP TILL END OF DATA
+            while($rows=$result->fetch_assoc())
+            {
+                ?>
 
-                                            </div>
-                                            <br>
-                                            <div class= "card-footer text-center ">
-                                                <div class="btn-group">
-                                            <a href="#" class="btn btn-success">Add to Cart</a>
-                        
-                                            </div>
-                                            </div>
-                                    </div>
-                                </div>
-                            <?php
-                        }
-                        ?>
+                <div class="col-md-4 mt-4">
+                    <div class="card border-light mb-3" style="width: 25rem; height: 15rem;">
+                        <div class="card-body overflow-auto">
+                            <h5 class="card-title"><?php echo $rows['movie_name'];?></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><?php echo $rows['director'];?></h6>
+                            <p class="card-text"><?php echo $rows['movie_description'];?></p>
 
-            
+                        </div>
+                        <br>
+                        <div class= "card-footer text-center ">
+                            <div class="btn-group">
+                                <a href="add_to_cart.php?movie_id=<?php echo $rows['movie_id']; ?>" class="btn btn-success">Add to Cart</a>
+                                <a href="feedback_insertion.php?movie_id=<?php echo $rows['movie_id']; ?>&movie_name=<?php echo $rows['movie_name']; ?>"; class="btn btn-success">Give Feedback</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+
+
         </div>
-        </div>
+    </div>
 
 
 </header>
@@ -143,5 +147,4 @@ $result = mysqli_query($db, $sql);
 </body>
 </html>
 
-}
 

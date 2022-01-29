@@ -1,11 +1,11 @@
 <?php
 
-$db = mysqli_connect('localhost','root','','suflix_project');
+$db = mysqli_connect('localhost','root','','SUFLIX');
 
 $id = $_GET['feedback_id']; // get id through query string
-$sql_statement_first = "DELETE FROM contains WHERE feedback_id = '$id'";
-$sql_statement_second = "DELETE FROM gives WHERE feedback_id = '$id'";
-$sql_statement_third = "DELETE FROM feedback WHERE feedback_id = '$id'";
+$sql_statement_first = "DELETE FROM Contains_Feedback WHERE feedback_id = '$id'";
+$sql_statement_second = "DELETE FROM Gives WHERE feedback_id = '$id'";
+$sql_statement_third = "DELETE FROM Feedback WHERE feedback_id = '$id'";
 
 
 $result_first = mysqli_query($db, $sql_statement_first);
@@ -19,4 +19,3 @@ else
 {
     echo "Error deleting record"; // display error message if not delete
 }
-
